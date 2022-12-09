@@ -33,6 +33,7 @@
     width: -webkit-fill-available;
     z-index: 1;
     position: fixed;
+    justify-content: space-between;
     box-shadow: 0 5px 10px #0d85fd;
     min-height: 60px;
     background-color: Black;
@@ -41,6 +42,7 @@
     --bs-gutter-x: 0;
     margin-left: 1%;
     margin-right: 1%;
+    width: fill-available;
     max-width: none;
 }
 .me-auto {
