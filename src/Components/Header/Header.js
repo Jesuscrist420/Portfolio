@@ -8,8 +8,15 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import 'bootstrap/dist/css/bootstrap.css';
 import './Header.css';
 import logo from '../../Assets/logo.png'
+import {useLayoutEffect} from "react";
+import { gsap } from "gsap";
 
 const Header = () => {
+
+    useLayoutEffect(() => {
+        window.scroll(0,0);
+        gsap.fromTo(".NavBar",{y:-100, duration:3, delay:0.3},{y:0, duration:3, delay:0.3, ease:'bounce'});
+    },[])
 
     const scrollToTop = () => {
         scroll.scrollToTop();
@@ -18,7 +25,7 @@ const Header = () => {
     return (
         <Navbar variant="dark" expand="lg" className="NavBar">
             <Container className="Container">
-                <Link to="homeSection">
+                <Link to="homeSection" offset={-120}>
                     <Navbar.Brand className="Brand">
                         <img
                             width="60"
@@ -35,9 +42,8 @@ const Header = () => {
                         <Link
                             activeClass="active"
                             to="homeSection"
-                            spy={true}
                             smooth={true}
-                            offset={-70}
+                            offset={-120}
                             duration={50}
                         >
                             <Nav.Link className="item">
@@ -48,30 +54,37 @@ const Header = () => {
                         <Link
                             activeClass="active"
                             to="aboutMeSection"
-                            spy={true}
                             smooth={true}
-                            offset={-75}
-                            duration={50}>
+                            offset={-200}
+                            duration={50}
+                        >
                             <Nav.Link className="item">
                                 <BsPersonBadge className="BsPersonBadge"/> About Me
                             </Nav.Link>
                         </Link>
                         <div className="vr"></div>
-                        <Link></Link>
-                        <Nav.Link
-                            className="item"
-                            href="#Skills"
+                        <Link
+                            activeClass="active"
+                            to="skillsSection"
+                            smooth={true}
+                            offset={-200}
+                            duration={50}
                         >
-                            <BsTerminal className="BsTerminal"/> Skills
-                        </Nav.Link>
+                            <Nav.Link className="item">
+                                <BsTerminal className="BsTerminal"/> Skills
+                            </Nav.Link>
+                        </Link>
                         <div className="vr"></div>
-                        <Link></Link>
-                        <Nav.Link
-                            className="item"
-                            href="#Contact"
+                        <Link
+                            activeClass="active"
+                            to="contactMeSection"
+                            smooth={true}
+                            duration={50}
                         >
-                            <MdContactPhone className="MdContactPhone"/> Contact Me
-                        </Nav.Link>
+                            <Nav.Link className="item">
+                                <MdContactPhone className="MdContactPhone"/> Contact Me
+                            </Nav.Link>
+                        </Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

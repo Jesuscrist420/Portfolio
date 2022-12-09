@@ -4860,6 +4860,11 @@
   "resolved" "https://registry.npmjs.org/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz"
   "version" "1.0.4"
 
+"gsap@file:gsap-bonus.tgz":
+  "integrity" "sha512-FhaMh9UmPu3VKbnZE1Pqg6Ryc+z1GdHeB8KWljp4JbSwPOeQUjgsqSb7twQlJmNPnt8KF6v8iNz0xvNOJ/xsrw=="
+  "resolved" "file:gsap-bonus.tgz"
+  "version" "3.11.3"
+
 "gzip-size@^6.0.0":
   "integrity" "sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q=="
   "resolved" "https://registry.npmjs.org/gzip-size/-/gzip-size-6.0.0.tgz"
