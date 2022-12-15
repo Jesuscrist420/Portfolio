@@ -5,19 +5,21 @@ import Home from "./Components/Home/Home";
 import AboutMe from "./Components/AboutMe/AboutMe";
 import Skills from "./Components/Skills/Skills";
 import ContactMe from "./Components/Contact/ContactMe";
+import { gsap } from "gsap";
 
 function App() {
 
+    let tl = gsap.timeline();
+
      return (
         <div className="App">
-            <NavBar/>
+            <NavBar tl={tl} />
             <div id="homeSection" className="App-header">
-                <Home />
+                <Home tl={tl}/>
             </div>
-            <header id="aboutMeSection" className="App-header">
+            <div id="aboutMeSection" className="App-header">
                 <AboutMe />
-                <img src={logo} className="App-logo" alt="logo" />
-            </header>
+            </div>
             <header id="skillsSection" className="App-header">
                 <Skills />
                 <img src={logo} className="App-logo" alt="logo" />

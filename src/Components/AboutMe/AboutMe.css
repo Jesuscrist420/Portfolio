@@ -1,0 +1,12 @@
+.portraitPhoto {
+    align-self: center;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+}
+@media screen and (max-width: 700px){
+    .portraitPhoto{
+        width: 250px;
+        height: 250px;
+    }
+}

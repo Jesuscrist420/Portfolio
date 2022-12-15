@@ -1,20 +1,22 @@
 import './Home.css'
-import Me from "../../Assets/Me.png";
-import {useLayoutEffect} from "react";
+import {useLayoutEffect, useState} from "react";
 import {gsap} from "gsap";
-const Home = () => {
+const Home = ({tl}) => {
+
+    const [animatedElement, setAnimatedElement] = useState(null);
 
     useLayoutEffect(() => {
-        window.scroll(0,0);
-        gsap.fromTo(".title",{x:-200, duration:3,opacity:0, delay:3.3},{x:0, duration:3, ease:'power2', opacity:1, delay:3 });
-        gsap.fromTo(".portraitPhoto",{x:200, duration:3,opacity:0, delay:3.3},{x:0, duration:3, ease:'power2', opacity:1, delay:3 });
-    },[])
+        if (!animatedElement) return;
+        let ctx = gsap.context(() => {
+            tl.to(animatedElement,{duration:1,opacity:1, scale:1, ease:"back", immediateRender: false});
+        });
+        return () => ctx.revert(); // cleanup
+    },[animatedElement])
 
     return(
         <section className="homeSection">
             <div className="presentation">
-                <h1 className="title">Hi I'm Jesus Developer!<br/>Welcome to my portfolio</h1>
-                <img src={Me} className="portraitPhoto"  alt="Jesus's Picture" />
+                <h1 ref={setAnimatedElement} className="title">Hi I'm Jesus Developer!<br/>Welcome to my portfolio</h1>
             </div>
         </section>
     )

@@ -4,26 +4,28 @@ import Container from 'react-bootstrap/Container';
 import {FaHome} from 'react-icons/fa'
 import {MdContactPhone} from "react-icons/md";
 import {BsPersonBadge, BsTerminal} from 'react-icons/bs';
-import { Link, animateScroll as scroll } from "react-scroll";
 import 'bootstrap/dist/css/bootstrap.css';
 import './NavBar.css';
 import logo from '../../Assets/logo.png'
-import {useLayoutEffect} from "react";
+import {useLayoutEffect, useRef} from "react";
 import { gsap } from "gsap";
 
-const NavBar = () => {
+const NavBar = ({tl}) => {
+    const navBarRef = useRef();
 
     useLayoutEffect(() => {
-        window.scroll(0,0);
-        gsap.fromTo(".NavBar",{y:-100, duration:3, delay:0.3 ,opacity:0},{y:0, duration:3, delay:0.3, ease:'power3', opacity:1 });
+        window.scroll(0,0)
+        // create our context. This function is invoked immediately and all GSAP animations
+        // and ScrollTriggers created during the execution of this function get recorded, so
+        // we can revert() them later (cleanup)
+        let ctx = gsap.context(() => {
+            tl.from(navBarRef.current, {y:-100, duration:2, delay:0.3 ,opacity:0, ease:'power3'});
+        });
+        return () => ctx.revert(); // cleanup
     },[])
 
-    const scrollToTop = () => {
-        scroll.scrollToTop();
-    };
-
     return (
-        <Navbar collapseOnSelect variant="dark pills" expand="lg" className="NavBar" id="navbar">
+        <Navbar ref={navBarRef} collapseOnSelect variant="dark pills" expand="lg" className="NavBar" id="navbar">
             <Container className="Container">
                 <Navbar.Brand href="#homeSection" className="Brand">
                     <img
