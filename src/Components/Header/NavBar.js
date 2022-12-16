@@ -22,7 +22,7 @@ const NavBar = ({tl}) => {
             tl.from(navBarRef.current, {y:-100, duration:2, delay:0.3 ,opacity:0, ease:'power3'});
         });
         return () => ctx.revert(); // cleanup
-    },[])
+    },[]);
 
     return (
         <Navbar ref={navBarRef} collapseOnSelect variant="dark pills" expand="lg" className="NavBar" id="navbar">
